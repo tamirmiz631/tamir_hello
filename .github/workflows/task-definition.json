@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:132735280818:task-definition/tamir_hello:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:132735280818:task-definition/tamir_hello:6",
     "containerDefinitions": [
         {
             "name": "tamir_hello",
-            "image": "132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello",
+            "image": "132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello:634808764222aad1333ca6868de4350d96f193dc",
             "cpu": 0,
             "memory": 1024,
             "portMappings": [
@@ -17,10 +17,8 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -28,8 +26,7 @@
                     "awslogs-group": "/ecs/tamir_hello",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             }
         }
     ],
@@ -37,7 +34,7 @@
     "taskRoleArn": "arn:aws:iam::132735280818:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::132735280818:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -83,7 +80,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-01-20T20:12:10.653Z",
+    "registeredAt": "2024-01-21T09:45:49.873Z",
     "registeredBy": "arn:aws:iam::132735280818:user/tamir1",
     "tags": []
 }
