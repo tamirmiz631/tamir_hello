@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:132735280818:task-definition/tamir_hello:6",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:132735280818:task-definition/tamir_hello:8",
     "containerDefinitions": [
         {
             "name": "tamir_hello",
-            "image": "132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello:634808764222aad1333ca6868de4350d96f193dc",
+            "image": "132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello:9b39ed882775880dd876a5dc25b783e42d23c11e",
             "cpu": 0,
             "memory": 1024,
             "portMappings": [
@@ -80,7 +80,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-01-21T09:45:49.873Z",
+    "registeredAt": "2024-01-22T13:01:05.010Z",
     "registeredBy": "arn:aws:iam::132735280818:user/tamir1",
     "tags": []
 }
