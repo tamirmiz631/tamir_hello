@@ -44,7 +44,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-#first build with jenkins tamittt
+#first build with jenkins tamitttss
 ## Test
 
 ```bash
