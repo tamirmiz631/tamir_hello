@@ -1,0 +1,45 @@
+pipeline {
+    
+    agent any
+    
+    environment {
+        registry = "132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello"
+        IMAGE_REPO_NAME="tamir_hello"
+        IMAGE_TAG='latest'
+    }
+    
+    stages {
+        stage ('starttriger') {
+            steps {
+              git branch: 'main', url: 'https://github.com/tamirmiz631/tamir_hello.git'
+            }
+        }
+        stage ('Checkout') {
+            steps {
+              checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tamirmiz631/tamir_hello']])
+            }
+        }
+        
+        stage ('Docker build') {
+            steps {
+                script {
+                    dockerImage = docker.build "${registry}"
+                }
+            }
+        }
+        stage('Pushing to ECR') {
+            steps{
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding' ,
+                    credentialsId: 'tamir-aws-creds' ,
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID' ,
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                        
+                      sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 132735280818.dkr.ecr.us-east-1.amazonaws.com'
+                      sh 'docker push 132735280818.dkr.ecr.us-east-1.amazonaws.com/tamir_hello:latest'  
+                      sh 'aws ecs update-service --cluster tamir_hello --service tamirhello --force-new-deployment --region us-east-1'
+                    }
+            }
+        }
+    }
+}
